@@ -7,6 +7,8 @@ def convertir_longitud(valor, unidad_origen, unidad_destino):
     }
     valor_en_metros = valor * conversiones[unidad_origen]
     return valor_en_metros / conversiones[unidad_destino]
+
+
 def convertir_masa(valor, unidad_origen, unidad_destino):
     conversiones = {
         'kilogramos': 1,
@@ -33,7 +35,7 @@ def convertir_intensidad_corriente(valor, unidad_origen, unidad_destino):
     conversiones = {
         'amperios': 1,
         'miliamperios': 0.001,
-        'microamperios': 1e-6
+        'microamperios': 0.000001
     }
     valor_en_amperios = valor * conversiones[unidad_origen]
     return valor_en_amperios / conversiones[unidad_destino]
@@ -63,7 +65,7 @@ def convertir_temperatura(valor, unidad_origen, unidad_destino):
 def convertir_cantidad_sustancia(valor, unidad_origen, unidad_destino):
     conversiones = {
         'moles': 1,
-        'gramos': 0.001
+        'gramos': 1/0.001  #gramos por mole
     }
     valor_en_moles = valor * conversiones[unidad_origen]
     return valor_en_moles / conversiones[unidad_destino]
@@ -71,13 +73,11 @@ def convertir_cantidad_sustancia(valor, unidad_origen, unidad_destino):
 
 def convertir_intensidad_luminosa(valor, unidad_origen, unidad_destino):
     conversiones = {
-        'lumens': 12.6,
-        'candelas': 1
+        'lumens': 1,
+        'candelas': 1/4 * 3.14159  #candelas por lumen
     }
-    valor_en_candelas = valor * conversiones[unidad_origen]
-    return valor_en_candelas / conversiones[unidad_destino]
-
-
+    valor_en_lumens = valor * conversiones[unidad_origen]
+    return valor_en_lumens / conversiones[unidad_destino]
 def main():
     print("Conversor de Magnitudes Físicas")
    
